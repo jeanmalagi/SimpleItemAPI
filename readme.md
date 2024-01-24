@@ -50,4 +50,4 @@ Exemplo de Resposta
 
 ```json
 {"id": 3, "nome": "Item Atualizado"}
-``
+```
