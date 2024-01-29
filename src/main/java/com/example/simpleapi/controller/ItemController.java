@@ -39,6 +39,22 @@ public class ItemController {
         return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
     }
 
+    @PutMapping("/{itemId}")
+    public ResponseEntity<Item> updateItem(@PathVariable Long itemId, @RequestBody Item updatedItem) {
+        Optional<Item> existingItemOptional = itemRepository.findById(itemId);
+
+        if (existingItemOptional.isPresent()) {
+            Item existingItem = existingItemOptional.get();
+            existingItem.setNome(updatedItem.getNome());
+            // Atualize outros campos conforme necessário
+
+            Item savedItem = itemRepository.save(existingItem);
+            return new ResponseEntity<>(savedItem, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id) {
         itemRepository.deleteById(id);
