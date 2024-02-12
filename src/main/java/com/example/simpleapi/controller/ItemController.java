@@ -1,5 +1,6 @@
 package com.example.simpleapi.controller;
 
+import com.example.simpleapi.exception.ItemNotFoundException;
 import com.example.simpleapi.model.Item;
 import com.example.simpleapi.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,9 @@ public class ItemController {
         if (itemOptional.isPresent()) {
             return new ResponseEntity<>(itemOptional.get(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new ItemNotFoundException("Item not found with ID: " + itemId);
         }
     }
-
     @PostMapping
     public ResponseEntity<?> addItem(@RequestBody Item item) {
         Item savedItem = itemRepository.save(item);
@@ -51,7 +51,7 @@ public class ItemController {
             Item savedItem = itemRepository.save(existingItem);
             return new ResponseEntity<>(savedItem, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            throw new ItemNotFoundException("Item not found with ID: " + itemId);
         }
     }
 
