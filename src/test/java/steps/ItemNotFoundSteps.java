@@ -1,6 +1,5 @@
 package steps;
 
-import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,11 +14,6 @@ public class ItemNotFoundSteps {
     private Response response;
 
     private Long itemId=9999L;
-
-    @BeforeAll
-    public static void setUp() {
-        // RestAssured.baseURI is set in the feature file, so no need to set it here
-    }
 
     @Given("a base URI is set to {string}")
     public void setBaseUri(String baseUri) {
