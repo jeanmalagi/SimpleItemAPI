@@ -29,8 +29,8 @@ public class GetListOfItems {
                 .when().get("/api/items");
     }
 
-    @Then("the response should have status {int}")
-    public void the_response_should_have_status(Integer int1) {
+    @Then("the response should have status 200")
+    public void the_response_should_have_status() {
         response.then().statusCode(200);
     }
 
