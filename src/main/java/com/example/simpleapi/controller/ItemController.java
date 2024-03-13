@@ -46,10 +46,8 @@ public class ItemController {
         if (existingItemOptional.isPresent()) {
             Item existingItem = existingItemOptional.get();
             existingItem.setNome(updatedItem.getNome());
-            // Atualize outros campos conforme necessário
-
             Item savedItem = itemRepository.save(existingItem);
-            return new ResponseEntity<>(savedItem, HttpStatus.OK);
+            return new ResponseEntity<>(savedItem, HttpStatus.NO_CONTENT);
         } else {
             throw new ItemNotFoundException("Item not found with ID: " + itemId);
         }
