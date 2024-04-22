@@ -27,7 +27,7 @@ public class CreateNewItem {
 
         response = given()
                 .contentType("application/json")
-                .body("{\"name\":\"" + itemName + "\"}")
+                .body("{\"nome\":\"" + itemName + "\"}")
                 .when().post(baseURI + "/api/items");
     }
 
