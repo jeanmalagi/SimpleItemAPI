@@ -34,7 +34,7 @@ public class UpdateItem {
     public void i_call_the_endpoint_to_update_the_item_with_id_and_new_details_with_name(Integer itemId, String itemName) {
         response = given()
                 .contentType("application/json")
-                .body("{\"name\":\"" + itemName + "\"}")
+                .body("{\"nome\":\"" + itemName + "\"}")
                 .when().put(baseURI + "/api/items/{itemId}", itemId);
 
     }
