@@ -31,8 +31,8 @@ public class CreateNewItem {
                 .when().post(baseURI + "/api/items");
     }
 
-    @Then("the response should have status {int}")
-    public void the_response_should_have_status(Integer int1) {
+    @Then("the response should have status is created")
+    public void the_response_should_have_status_is_created() {
         response.then().statusCode(201);
     }
 
